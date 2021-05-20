@@ -16,6 +16,7 @@ export default function Home(props: { message: any }) {
           type="button"
           onClick={() => {
             Sentry.captureMessage(props.message);
+            Sentry.captureException(new Error(props.message));
           }}
         >
           Click me

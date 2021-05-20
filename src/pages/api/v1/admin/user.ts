@@ -1,6 +1,13 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import { withSentry } from "@sentry/nextjs";
+import { NextApiRequest, NextApiResponse } from "next";
 
-export default (req, res) => {
+type Data = {
+  name: string;
+};
+
+const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   res.statusCode = 200;
   res.json({ name: "John Doe" });
 };
+
+export default withSentry(handler);
